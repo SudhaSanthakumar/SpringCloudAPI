@@ -42,7 +42,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/user-api/v1")
 public class UserResourceController {
 
 	
@@ -78,7 +78,7 @@ public class UserResourceController {
 
 			  			
 		log.info("calling utility service");
-		ResponseEntity<Utility[]> utilEntity=restTemplate.exchange("http://utility-service/v1/utilities",HttpMethod.GET,httpHeaders,Utility[].class);
+		ResponseEntity<Utility[]> utilEntity=restTemplate.exchange("http://utility-service/util-api/v1/utilities",HttpMethod.GET,httpHeaders,Utility[].class);
 		
 		Set<Utility> utilSet=new HashSet<Utility>();
 		for(Utility u: utilEntity.getBody())
@@ -103,7 +103,7 @@ public class UserResourceController {
 		headers.add("content-type",MediaType.APPLICATION_JSON_VALUE);
 		HttpEntity httpHeaders=new HttpEntity<String>("parameters",headers);
 		System.out.println("calling utility service");
-		ResponseEntity<Utility[]> utilEntity=restTemplate.exchange("http://utility-service/v1/utilities",HttpMethod.GET,httpHeaders,Utility[].class);
+		ResponseEntity<Utility[]> utilEntity=restTemplate.exchange("http://utility-service/util-api/v1/utilities",HttpMethod.GET,httpHeaders,Utility[].class);
 		
 		for(Utility u:utilEntity.getBody())
 			System.out.println(u.getUtilityId()+"  "+u.getUtilityName());
