@@ -27,7 +27,7 @@ import com.demo.util.service.UtilityService;
 
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/util-api/v1")
 public class UtilityResourceController {
 
 	
